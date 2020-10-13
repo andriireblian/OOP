@@ -21,8 +21,8 @@ export class Point {
             return new Point(this.x, this.y).distance(a.x, a.y);
         } else if (typeof a === "number" && b) {
             return Math.sqrt(((a - this.x) ** 2) + ((b - this.y) ** 2));
+        } else {
+            return Math.sqrt(((this.x) ** 2) + ((this.y) ** 2));
         }
-        return 0;
-
     }
 }

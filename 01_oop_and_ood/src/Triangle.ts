@@ -2,21 +2,20 @@ import { Shape } from './Shape';
 import {Point} from './Point';
 
 export class Triangle extends Shape {
-    private v1: Point;
-    private v2: Point;
-    private v3: Point;
+    protected v1: Point;
+    protected v2: Point;
+    protected v3: Point;
 
-    private d1: number = 0;
-    private d2: number = 0;
-    private d3: number = 0;
+    protected constructor(x1: Point, x2: Point, x3: Point);
+    protected constructor(x1: Point, x2: Point, x3: Point, color?: string, filled?: boolean);
+    protected constructor(x1?: Point, x2?: Point, x3?: Point, color?: string, filled?: boolean) {
 
-
-    constructor(x1: Point, x2: Point, x3: Point) {
-        super();
+        super([x1, x2 , x3], color, filled);
 
         this.v1 = x1;
         this.v2 = x2;
         this.v3 = x3;
+
     }
 
     toString(): string {
@@ -24,10 +23,19 @@ export class Triangle extends Shape {
         return `Triangle[v1=(${v1.x},${v1.y}),v2=(${v2.x},${v2.y}),v3=(${v3.x},${v3.y})]`
     }
 
-    getType(): void {
-        let {d1, d2, d3} = this;
-        const type = (d1 === d2 && d2 === d3) && 'equilateral triangle' || (d1 === d2 || d1 === d3 || d2 === d3) && 'isosceles triangle' || 'scalene triangle';
-        console.log(type);
+    getType(): string {
+        let {d1, d2, d3} = this,
+            type: string;
+
+        if (d1 === d2 && d2 === d3) {
+            type = 'equilateral triangle';
+        } else if (d1 === d2 || d1 === d3 || d2 === d3) {
+            type = 'isosceles triangle';
+        } else {
+            type = 'scalene triangle';
+        }
+
+        return type;
     }
 
 }
