@@ -20,13 +20,14 @@ export abstract class Shape {
         this.filled = true;
         this.points = [];
 
-        if ([].length < 3) {
+        if (points.length < 3) {
             throw new Error('At least 3 points expected!');
         }
     }
 
     toString(): string {
-        return "A Shape with color of xxx and filled/Not filled. Points: (x1, y1), (x2, y2)...";
+        let {c1, c2, c3} = this;
+        return `A Shape with color of xxx and filled/Not filled. Points: (${c1.x},${c1.y}), (${c2.x},${c2.y}), (${c3.x},${c3.y}),`;
     }
 
     getPerimeter(): number {
