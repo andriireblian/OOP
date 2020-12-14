@@ -6,13 +6,8 @@ function getEmptyTable(tableName) {
     for (let i = 0; i < textEmptyTable.length - 2; i++) {
         result += '═';
     }
-    result += '╗' + os.EOL;
-    result += textEmptyTable + os.EOL;
-    result += '╚';
-    for (let i = 0; i < textEmptyTable.length - 2; i++) {
-        result += '═';
-    }
-    result += '╝' + os.EOL;
+    result += '╗' + os.EOL + textEmptyTable + os.EOL + '╚' + '╝' + os.EOL;
+
     return result;
 }
 
@@ -74,17 +69,11 @@ function getHeaderOfTheTable(dataSets) {
                 result += ' ';
             }
             result += columnNames[column].toString();
-            for (let j = 0; j < (maxColumnSize - columnNamesLength) / 2; j++) {
-                result += ' ';
-            }
         } else {
             for (let j = 0; j < Math.trunc((maxColumnSize - columnNamesLength) / 2); j++) {
                 result += ' ';
             }
             result += columnNames[column].toString();
-            for (let j = 0; j <= Math.trunc((maxColumnSize - columnNamesLength) / 2); j++) {
-                result += ' ';
-            }
         }
     }
     result += '║' + os.EOL;
@@ -137,20 +126,12 @@ function getStringTableData(dataSets) {
                 for (let j = 0; j < (maxColumnSize - valuesLength) / 2; j++) {
                     result += ' ';
                 }
-                result += values[column].toString();
-                for (let j = 0; j < (maxColumnSize - valuesLength) / 2; j++) {
-                    result += ' ';
-                }
-                result += '║';
+                result += values[column].toString() + '║';
             } else {
                 for (let j = 0; j < Math.trunc((maxColumnSize - valuesLength) / 2); j++) {
                     result += ' ';
                 }
-                result += values[column].toString();
-                for (let j = 0; j <= Math.trunc((maxColumnSize - valuesLength) / 2); j++) {
-                    result += ' ';
-                }
-                result += '║';
+                result += values[column].toString() + '║';
             }
         }
         result += os.EOL;

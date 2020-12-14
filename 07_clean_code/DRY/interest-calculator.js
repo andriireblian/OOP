@@ -53,12 +53,11 @@ module.exports = {
 // utils
 
 const calculateDiffBetweenDates = (start, end) => {
-    const diffYear = end.getFullYear() - start.getFullYear();
+    const diffYear = end.getFullYear() - start.getFullYear(),
+          endNcurrentMonth = end.getMonth() === start.getMonth(),
+          endDate = end.getDate() < start.getDate();
 
-    if (end.getMonth() < start.getMonth()) {
-        return diffYear - 1;
-    }
-    if (end.getMonth() === start.getMonth() && end.getDate() < start.getDate()) {
+    if (end.getMonth() < start.getMonth() && endNcurrentMonth && endDate) {
         return diffYear - 1;
     }
 

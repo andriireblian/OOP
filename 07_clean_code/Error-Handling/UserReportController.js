@@ -23,10 +23,6 @@ module.exports = class UserReportController {
         }
     }
 
-    getUserReportBuilder() {
-        return this.userReportBuilder;
-    }
-
     setUserReportBuilder(userReportBuilder) {
         this.userReportBuilder = userReportBuilder;
     }

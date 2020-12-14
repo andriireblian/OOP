@@ -20,10 +20,6 @@ module.exports = class UserReportBuilder {
         if (this.userDao === null) generateError(USER_NOT_PRESENT);
     }
 
-    getUserDao() {
-        return this.userDao;
-    }
-
     setUserDao(userDao) {
         this.userDao = userDao;
     }
